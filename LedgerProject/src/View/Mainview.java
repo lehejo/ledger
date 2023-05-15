@@ -1,9 +1,9 @@
-package Ledger;
-//사용자 입력 및 프로그램 실행을 담당합니다.
+package View;
+//메인 창의 UI를 구성하는 클래스
 import javax.swing.*;
 
-public class Main extends JFrame {
-  public Main() {
+public class MainView extends JFrame {
+  public MainView() {
     // JFrame의 기본 설정
     this.setTitle("가계부 프로그램");
     this.setSize(1000, 500);
@@ -18,7 +18,8 @@ public class Main extends JFrame {
   }
   
   public static void main(String[] args) {
-    // 새로운 Main 객체 생성
-    Main frame = new Main();
+    // 새로운 MainView 객체 생성
+    MainView frame = new MainView();
   }
 }
+
