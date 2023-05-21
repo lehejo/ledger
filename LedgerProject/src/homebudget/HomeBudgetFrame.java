@@ -12,6 +12,7 @@ import java.util.Map;
 public class HomeBudgetFrame extends JFrame {
     private JLabel mostSpentCategoryLabel;
     private JButton addTransactionButton;
+    private JButton addDepositButton;
     private JButton viewTransactionsButton;
     private JLabel totalAmountLabel;
 
@@ -42,6 +43,9 @@ public class HomeBudgetFrame extends JFrame {
         addTransactionButton = new JButton("지출");
         buttonPanel.add(addTransactionButton);
 
+        addDepositButton = new JButton("입금");
+        buttonPanel.add(addDepositButton);
+
         viewTransactionsButton = new JButton("내역보기");
         buttonPanel.add(viewTransactionsButton);
 
@@ -56,6 +60,13 @@ public class HomeBudgetFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 addTransaction();
+            }
+        });
+
+        addDepositButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addDeposit();
             }
         });
 
@@ -123,6 +134,64 @@ public class HomeBudgetFrame extends JFrame {
             }
         });
     }
+
+    private void addDeposit() {
+        JFrame transactionFrame = new JFrame("Add Transaction");
+        transactionFrame.setPreferredSize(new Dimension(300, 200));
+        transactionFrame.setResizable(false);
+
+        JPanel panel = new JPanel(new BorderLayout());
+
+        JPanel inputPanel = new JPanel(new GridLayout(3, 2));
+
+        JLabel dateLabel = new JLabel("날짜:");
+        JTextField dateField = new JTextField();
+        inputPanel.add(dateLabel);
+        inputPanel.add(dateField);
+
+        JLabel categoryLabel = new JLabel("카테고리:");
+        JComboBox<String> categoryComboBox = new JComboBox<>(new String[]{"월급", "용돈", "경조사비"});
+        inputPanel.add(categoryLabel);
+        inputPanel.add(categoryComboBox);
+
+        JLabel amountLabel = new JLabel("금액:");
+        JTextField amountField = new JTextField();
+        inputPanel.add(amountLabel);
+        inputPanel.add(amountField);
+
+        panel.add(inputPanel, BorderLayout.CENTER);
+
+        JButton saveButton = new JButton("저장");
+        panel.add(saveButton, BorderLayout.SOUTH);
+
+        transactionFrame.add(panel);
+
+        transactionFrame.pack();
+        transactionFrame.setLocationRelativeTo(this);
+        transactionFrame.setVisible(true);
+
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String date = dateField.getText();
+                String category = (String) categoryComboBox.getSelectedItem();
+                String amountText = amountField.getText();
+
+                if (!date.isEmpty() && !amountText.isEmpty() && amountText.matches("\\d+")) {
+                    int amount = Integer.parseInt(amountText);
+                    Transaction transaction = new Transaction(date, category, amount);
+                    transactions.add(transaction);
+                    totalAmount += amount;
+                    totalAmountLabel.setText("총금액: " + totalAmount);
+                    transactionFrame.dispose();
+                    updateMostSpentCategory();
+                } else {
+                    JOptionPane.showMessageDialog(transactionFrame, "Invalid input. Please enter valid data.");
+                }
+            }
+        });
+    }
+
 
     private void viewTransactions() {
         JFrame transactionsFrame = new JFrame("지출내역");
