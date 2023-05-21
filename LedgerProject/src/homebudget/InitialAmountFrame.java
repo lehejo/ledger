@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class InitialAmountFrame extends JFrame {
     private JTextField initialAmountField;
@@ -50,4 +53,5 @@ public class InitialAmountFrame extends JFrame {
             }
         });
     }
+
 }
