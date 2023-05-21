@@ -21,7 +21,7 @@ public class HomeBudgetFrame extends JFrame {
 
     public HomeBudgetFrame(int initialAmount) {
         setTitle("가계부");
-        setPreferredSize(new Dimension(400, 200));
+        setPreferredSize(new Dimension(400, 150));
         setResizable(false);
 
         totalAmount = initialAmount;
@@ -36,12 +36,14 @@ public class HomeBudgetFrame extends JFrame {
         JPanel panel = new JPanel(new BorderLayout());
 
         mostSpentCategoryLabel = new JLabel();
+        mostSpentCategoryLabel.setHorizontalAlignment(JLabel.CENTER);
+        mostSpentCategoryLabel.setFont(new Font("SansSerif", Font.PLAIN, 15));
         panel.add(mostSpentCategoryLabel, BorderLayout.NORTH);
 
         totalAmountLabel = new JLabel("총금액: " + totalAmount);
         totalAmountLabel.setHorizontalAlignment(JLabel.CENTER); // 가운데 정렬 설정
         totalAmountLabel.setFont(new Font("SansSerif", Font.PLAIN, 15));
-        panel.add(totalAmountLabel, BorderLayout.NORTH);
+        panel.add(totalAmountLabel, BorderLayout.SOUTH);
 
         JPanel buttonPanel = new JPanel(new FlowLayout());
 
