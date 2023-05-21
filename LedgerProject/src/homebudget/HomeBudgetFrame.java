@@ -21,7 +21,7 @@ public class HomeBudgetFrame extends JFrame {
 
     public HomeBudgetFrame(int initialAmount) {
         setTitle("가 계 부 !!!!!!!!!");
-        setPreferredSize(new Dimension(400, 200));
+        setPreferredSize(new Dimension(400, 100));
         setResizable(false);
 
         totalAmount = initialAmount;
@@ -51,7 +51,7 @@ public class HomeBudgetFrame extends JFrame {
 
         panel.add(buttonPanel, BorderLayout.CENTER);
 
-        totalAmountLabel = new JLabel("Total Amount: " + totalAmount);
+        totalAmountLabel = new JLabel("총금액: " + totalAmount);
         panel.add(totalAmountLabel, BorderLayout.SOUTH);
 
         add(panel);
@@ -79,7 +79,7 @@ public class HomeBudgetFrame extends JFrame {
     }
 
     private void addTransaction() {
-        JFrame transactionFrame = new JFrame("Add Transaction");
+        JFrame transactionFrame = new JFrame("지출");
         transactionFrame.setPreferredSize(new Dimension(300, 200));
         transactionFrame.setResizable(false);
 
@@ -119,24 +119,25 @@ public class HomeBudgetFrame extends JFrame {
                 String date = dateField.getText();
                 String category = (String) categoryComboBox.getSelectedItem();
                 String amountText = amountField.getText();
+                String TransactionType = "지출";
 
                 if (!date.isEmpty() && !amountText.isEmpty() && amountText.matches("\\d+")) {
                     int amount = Integer.parseInt(amountText);
-                    Transaction transaction = new Transaction(date, category, amount);
+                    Transaction transaction = new Transaction(date, category, amount, TransactionType);
                     transactions.add(transaction);
                     totalAmount -= amount;
                     totalAmountLabel.setText("총금액: " + totalAmount);
                     transactionFrame.dispose();
                     updateMostSpentCategory();
                 } else {
-                    JOptionPane.showMessageDialog(transactionFrame, "Invalid input. Please enter valid data.");
+                    JOptionPane.showMessageDialog(transactionFrame, "값을 입력해주세요.");
                 }
             }
         });
     }
 
     private void addDeposit() {
-        JFrame transactionFrame = new JFrame("Add Transaction");
+        JFrame transactionFrame = new JFrame("입금");
         transactionFrame.setPreferredSize(new Dimension(300, 200));
         transactionFrame.setResizable(false);
 
@@ -176,22 +177,20 @@ public class HomeBudgetFrame extends JFrame {
                 String date = dateField.getText();
                 String category = (String) categoryComboBox.getSelectedItem();
                 String amountText = amountField.getText();
-
+                String TransactionType = "입금";
                 if (!date.isEmpty() && !amountText.isEmpty() && amountText.matches("\\d+")) {
                     int amount = Integer.parseInt(amountText);
-                    Transaction transaction = new Transaction(date, category, amount);
+                    Transaction transaction = new Transaction(date, category, amount, TransactionType);
                     transactions.add(transaction);
                     totalAmount += amount;
                     totalAmountLabel.setText("총금액: " + totalAmount);
                     transactionFrame.dispose();
-                    updateMostSpentCategory();
                 } else {
-                    JOptionPane.showMessageDialog(transactionFrame, "Invalid input. Please enter valid data.");
+                    JOptionPane.showMessageDialog(transactionFrame, "값을 입력해주세요.");
                 }
             }
         });
     }
-
 
     private void viewTransactions() {
         JFrame transactionsFrame = new JFrame("지출내역");

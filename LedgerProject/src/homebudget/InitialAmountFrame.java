@@ -29,7 +29,7 @@ public class InitialAmountFrame extends JFrame {
         initialAmountField = new JTextField();
         panel.add(initialAmountField, BorderLayout.CENTER);
 
-        startButton = new JButton("Start");
+        startButton = new JButton("시작하기");
         panel.add(startButton, BorderLayout.SOUTH);
 
         add(panel);
@@ -45,7 +45,7 @@ public class InitialAmountFrame extends JFrame {
                     homeBudgetFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     homeBudgetFrame.setVisible(true);
                 } else {
-                    JOptionPane.showMessageDialog(InitialAmountFrame.this, "Invalid input. Please enter a valid amount.");
+                    JOptionPane.showMessageDialog(InitialAmountFrame.this, "값을 입력해주세요.");
                 }
             }
         });
