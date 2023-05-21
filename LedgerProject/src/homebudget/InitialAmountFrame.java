@@ -26,13 +26,16 @@ public class InitialAmountFrame extends JFrame {
     private void createComponents() {
         JPanel panel = new JPanel(new BorderLayout());
 
-        JLabel label = new JLabel("초기금액을 입력하세요 !:");
+        JLabel label = new JLabel("현재 보유 중인 자산 입력");
+        label.setFont(new Font("SansSerif", Font.BOLD, 14));
         panel.add(label, BorderLayout.NORTH);
+        label.setHorizontalAlignment(JLabel.CENTER);
 
         initialAmountField = new JTextField();
         panel.add(initialAmountField, BorderLayout.CENTER);
 
         startButton = new JButton("시작하기");
+        startButton.setFont(new Font("SansSerif", Font.BOLD, 14));
         panel.add(startButton, BorderLayout.SOUTH);
 
         add(panel);
