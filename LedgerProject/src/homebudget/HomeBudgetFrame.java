@@ -48,7 +48,11 @@ public class HomeBudgetFrame extends JFrame {
         JPanel buttonPanel = new JPanel(new FlowLayout());
 
         addTransactionButton = new JButton("지출");
+        addTransactionButton.setFont(new Font("Arial", Font.PLAIN, 12)); // 버튼 글꼴 및 크기 설정
+        addTransactionButton.setBounds(30, 170, 60, 30); // 버튼 위치와 크기 설정
+        buttonPanel.setLayout(null); // 레이아웃 매니저를 null로 설정
         buttonPanel.add(addTransactionButton);
+
 
         addDepositButton = new JButton("입금");
         buttonPanel.add(addDepositButton);
@@ -237,7 +241,7 @@ public class HomeBudgetFrame extends JFrame {
                 mostSpentCategory = category;
             }
         }
-
         mostSpentCategoryLabel.setText("가장 많이 사용된 카테고리: " + mostSpentCategory);
+        mostSpentCategoryLabel.setFont(new Font("SansSerif", Font.PLAIN, 14));
     }
 }
