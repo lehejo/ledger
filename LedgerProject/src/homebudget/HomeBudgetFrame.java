@@ -21,7 +21,11 @@ public class HomeBudgetFrame extends JFrame {
 
     public HomeBudgetFrame(int initialAmount) {
         setTitle("가계부");
+<<<<<<< Updated upstream
         setPreferredSize(new Dimension(400, 150));
+=======
+        setPreferredSize(new Dimension(400, 200));
+>>>>>>> Stashed changes
         setResizable(false);
 
         totalAmount = initialAmount;
@@ -62,6 +66,12 @@ public class HomeBudgetFrame extends JFrame {
 
         panel.add(buttonPanel, BorderLayout.CENTER);
 
+<<<<<<< Updated upstream
+=======
+        totalAmountLabel = new JLabel("총 자산: " + totalAmount);
+        panel.add(totalAmountLabel, BorderLayout.SOUTH);
+
+>>>>>>> Stashed changes
         add(panel);
 
         addTransactionButton.addActionListener(new ActionListener() {

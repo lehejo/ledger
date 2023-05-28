@@ -14,7 +14,7 @@ public class InitialAmountFrame extends JFrame {
 
     public InitialAmountFrame() {
         setTitle("초기금액 설정");
-        setPreferredSize(new Dimension(300, 150));
+        setPreferredSize(new Dimension(400, 250));
         setResizable(false);
 
         createComponents();
@@ -26,8 +26,12 @@ public class InitialAmountFrame extends JFrame {
     private void createComponents() {
         JPanel panel = new JPanel(new BorderLayout());
 
+<<<<<<< Updated upstream
         JLabel label = new JLabel("현재 보유 중인 자산 입력");
         label.setFont(new Font("SansSerif", Font.BOLD, 14));
+=======
+        JLabel label = new JLabel("현재 보유 중인 금액을 입력해주세요 !");
+>>>>>>> Stashed changes
         panel.add(label, BorderLayout.NORTH);
         label.setHorizontalAlignment(JLabel.CENTER);
 
@@ -35,7 +39,10 @@ public class InitialAmountFrame extends JFrame {
         panel.add(initialAmountField, BorderLayout.CENTER);
 
         startButton = new JButton("시작하기");
+<<<<<<< Updated upstream
         startButton.setFont(new Font("SansSerif", Font.BOLD, 14));
+=======
+>>>>>>> Stashed changes
         panel.add(startButton, BorderLayout.SOUTH);
 
         add(panel);
